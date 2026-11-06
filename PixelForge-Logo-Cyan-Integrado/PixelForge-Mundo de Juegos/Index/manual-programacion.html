@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Guía práctica progresiva para jóvenes, estudiantes y personas que desean iniciar en programación, desarrollo de videojuegos, aplicaciones y páginas web."><title>Manual de programación para principiantes | Pixel Forge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/manuales.css"></head>
+<body class="manual-page" data-manual="manual-programacion">
+<header class="manual-topbar"><a class="manual-brand" href="./index.html#inicio"><span class="brand-cube">PF</span><span>PIXEL <b>FORGE</b></span></a><nav><a href="./index.html#aprendizaje">Biblioteca</a><a href="./manual-programacion.html">Programación</a><a href="./manual-streaming.html">Streaming</a></nav></header>
+<main class="manual-shell">
+<section class="manual-hero"><div><p class="manual-eyebrow">ANEXO EDUCATIVO · PROGRAMACIÓN</p><h1>Manual de programación para principiantes</h1><p class="manual-subtitle">Aprende a crear videojuegos, aplicaciones móviles y páginas web desde cero.</p><p class="manual-description">Guía práctica progresiva para jóvenes, estudiantes y personas que desean iniciar en programación, desarrollo de videojuegos, aplicaciones y páginas web.</p><div class="manual-meta"><span>12+/16 capítulos</span><span>Lectura y práctica por etapas</span><span>Nivel principiante</span></div></div><div class="hero-emblem" aria-hidden="true"><span>&lt;/&gt;</span><i></i><i></i><i></i></div></section>
+<div class="manual-layout"><aside class="manual-sidebar" id="indice"><div class="sidebar-heading"><span>CONTENIDO</span><small id="progressText">0 de 12 completados</small></div><div class="progress-track"><span id="progressBar"></span></div><label class="manual-search-label" for="chapterSearch">Buscar capítulo</label><input id="chapterSearch" class="manual-search" type="search" placeholder="Escribe para filtrar…"> <nav class="chapter-nav"><a href="#capitulo-1" data-nav="1"><span>01</span>Introducción a la programación</a><a href="#capitulo-2" data-nav="2"><span>02</span>Preparación del entorno de trabajo</a><a href="#capitulo-3" data-nav="3"><span>03</span>Desarrollo de videojuegos</a><a href="#capitulo-4" data-nav="4"><span>04</span>Desarrollo de aplicaciones móviles</a><a href="#capitulo-5" data-nav="5"><span>05</span>Desarrollo de páginas web</a><a href="#capitulo-6" data-nav="6"><span>06</span>Comparación de las tres áreas</a><a href="#capitulo-7" data-nav="7"><span>07</span>Errores frecuentes y soluciones</a><a href="#capitulo-8" data-nav="8"><span>08</span>Ejercicios prácticos</a><a href="#capitulo-9" data-nav="9"><span>09</span>Recursos para continuar aprendiendo</a><a href="#capitulo-10" data-nav="10"><span>10</span>Proyecto final</a><a href="#capitulo-11" data-nav="11"><span>11</span>Glosario de programación</a><a href="#capitulo-12" data-nav="12"><span>12</span>Conclusión</a></nav><a class="sidebar-back" href="./index.html#aprendizaje">← Volver a la Biblioteca</a></aside>
+<article class="manual-content"><div class="reading-tools"><span>LECTURA GUIADA</span><button type="button" id="resetProgress">Reiniciar progreso</button><button type="button" onclick="window.print()">Imprimir / Guardar PDF</button></div>
+<section class="manual-intro"><h2>Antes de comenzar</h2><p>Este material está dirigido a personas que empiezan desde cero. Avanza capítulo por capítulo, realiza las prácticas y adapta los ejemplos a tu proyecto. Los avances se guardan únicamente en este navegador; no se sincronizan con tu cuenta de Pixel Forge.</p><div class="tip"><b>Cómo usar este manual:</b> lee el concepto, realiza los pasos, prueba el resultado y marca el capítulo cuando termines. Los enlaces externos abren documentación de sus responsables.</div></section>
+<section class="manual-chapter" id="capitulo-1" data-chapter="1">
+      <div class="chapter-kicker">CAPÍTULO 01</div>
+      <h2>Introducción a la programación</h2>
+      <div class="chapter-body">
+<p>Programar es escribir instrucciones precisas para que una computadora realice una tarea. Un programa recibe datos, procesa esos datos mediante reglas y produce un resultado. No necesitas memorizar un lenguaje completo: primero aprende a dividir un problema en pasos pequeños.</p>
+<div class="concept-grid"><article><h3>Algoritmo</h3><p>Secuencia finita y ordenada de pasos para resolver un problema. Ejemplo: preparar una bebida, desde llenar el vaso hasta servir.</p></article><article><h3>Lenguaje</h3><p>Conjunto de reglas y palabras que permite expresar instrucciones: Python, JavaScript, C#, GDScript o Dart.</p></article><article><h3>Programa</h3><p>Implementación de un algoritmo en un lenguaje que el entorno puede ejecutar.</p></article></div>
+<h3>Los bloques fundamentales</h3>
+<ul><li><b>Variables:</b> nombres asociados a valores, por ejemplo <code>puntos = 0</code>.</li><li><b>Tipos:</b> números, texto, valores booleanos y colecciones.</li><li><b>Condiciones:</b> permiten elegir una ruta: <code>si</code> ocurre algo, entonces...</li><li><b>Ciclos:</b> repiten instrucciones mientras se cumpla una condición o por cada elemento.</li><li><b>Funciones:</b> agrupan instrucciones con un nombre y pueden recibir datos y devolver resultados.</li><li><b>Errores:</b> sintaxis (reglas mal escritas), ejecución (falla al correr) y lógica (el programa corre, pero responde mal).</li></ul>
+<h3>Ejemplo cotidiano convertido en algoritmo</h3><ol><li>Leer el total de una compra.</li><li>Si el total supera 500, calcular un descuento del 10 %.</li><li>Mostrar el importe final.</li></ol>
+<pre class="code-wrap"><code class="language-python">total = 650
+if total &gt; 500:
+    total = total * 0.90
+print(&quot;Total a pagar:&quot;, total)</code><button class="copy-code" type="button">Copiar código</button></pre>
+<p><b>Prueba mental:</b> con un total de 400 no se aplica descuento; con 650 el resultado es 585. Practica describiendo primero la solución con palabras y después tradúcela a código.</p>
+</div>
+      <label class="chapter-complete"><input type="checkbox" class="chapter-check" data-check="1"> Marcar capítulo como completado</label>
+      <a class="back-index" href="#indice">↑ Volver al índice</a>
+    </section><section class="manual-chapter" id="capitulo-2" data-chapter="2">
+      <div class="chapter-kicker">CAPÍTULO 02</div>
+      <h2>Preparación del entorno de trabajo</h2>
+      <div class="chapter-body">
+<p>Un entorno de trabajo reúne el equipo, el sistema operativo, el editor, los SDK o motores y las herramientas para probar el proyecto. Una computadora reciente de uso general suele bastar para comenzar con páginas web y ejercicios; el desarrollo 3D y los emuladores móviles pueden exigir más memoria y una GPU compatible.</p>
+<h3>Ruta de instalación sugerida en Windows</h3><ol><li>Actualiza Windows y comprueba que tengas espacio disponible.</li><li>Instala <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a>.</li><li>En VS Code instala extensiones solo desde el Marketplace oficial; para HTML/CSS/JS puedes empezar sin extensiones adicionales.</li><li>Descarga <a href="https://godotengine.org/download/" target="_blank" rel="noopener">Godot 4</a> para el primer videojuego. La versión estándar es suficiente para GDScript.</li><li>Para Flutter, sigue la guía oficial de instalación de <a href="https://docs.flutter.dev/get-started/install" target="_blank" rel="noopener">Flutter</a>, instala el SDK y Android Studio si vas a usar el emulador Android.</li><li>Abre una terminal y ejecuta <code>flutter doctor</code>; corrige los elementos que el diagnóstico marque como pendientes.</li><li>Crea una carpeta por proyecto y conserva nombres claros: <code>assets</code>, <code>scenes</code>, <code>scripts</code> o <code>lib</code>, según la herramienta.</li></ol>
+<div class="tip"><b>Consejo:</b> instala una herramienta a la vez y abre un proyecto de prueba antes de agregar otras. Así podrás identificar qué instalación causó un problema.</div>
+<h3>Herramientas por área</h3><table><thead><tr><th>Área</th><th>Herramienta inicial</th><th>Para qué sirve</th></tr></thead><tbody><tr><td>Web</td><td>VS Code + navegador</td><td>Editar y probar HTML, CSS y JavaScript.</td></tr><tr><td>Videojuegos</td><td>Godot 4</td><td>Crear escenas 2D/3D y scripts GDScript.</td></tr><tr><td>Móvil</td><td>Flutter + Dart</td><td>Construir interfaces y aplicaciones multiplataforma.</td></tr><tr><td>Control de versiones</td><td>Git + GitHub</td><td>Guardar historial y compartir código.</td></tr></tbody></table>
+<p>En macOS y Linux, usa las instrucciones oficiales específicas de cada sistema. Los nombres de botones, requisitos y pasos de instalación pueden cambiar entre versiones.</p>
+</div>
+      <label class="chapter-complete"><input type="checkbox" class="chapter-check" data-check="2"> Marcar capítulo como completado</label>
+      <a class="back-index" href="#indice">↑ Volver al índice</a>
+    </section><section class="manual-chapter" id="capitulo-3" data-chapter="3">
+      <div class="chapter-kicker">CAPÍTULO 03</div>
+      <h2>Desarrollo de videojuegos</h2>
+      <div class="chapter-body">
+<p>Un videojuego combina reglas, entrada del jugador, gráficos, sonido, físicas y estados. El motor organiza estos elementos y ofrece herramientas para construir escenas, importar recursos, probar y exportar.</p>
+<div class="concept-grid"><article><h3>Godot + GDScript</h3><p>Motor gratuito y de código abierto; GDScript tiene sintaxis sencilla y está integrado con el editor. Buena ruta 2D inicial.</p><a href="https://godotengine.org/" target="_blank" rel="noopener">Sitio oficial</a></article><article><h3>Unity + C#</h3><p>Motor ampliamente usado en 2D, 3D y experiencias interactivas. Requiere aprender C# y el flujo de escenas y componentes.</p><a href="https://unity.com/" target="_blank" rel="noopener">Sitio oficial</a></article><article><h3>Unreal Engine</h3><p>Motor 3D avanzado con Blueprints visuales y C++. Puede requerir hardware más potente.</p><a href="https://www.unrealengine.com/" target="_blank" rel="noopener">Sitio oficial</a></article><article><h3>Scratch</h3><p>Entorno visual por bloques para aprender secuencias, eventos, ciclos y condiciones sin comenzar escribiendo sintaxis.</p><a href="https://scratch.mit.edu/" target="_blank" rel="noopener">Sitio oficial</a></article></div>
+<h3>Tutorial: juego 2D de recolección en Godot 4</h3>
+<p><b>Resultado:</b> controlarás un personaje visto desde arriba, recogerás monedas, sumarás puntos y terminarás al recogerlas todas. El tutorial usa formas simples para que no dependas de imágenes externas. Requiere Godot 4.x; consulta la documentación estable si tu versión cambia.</p>
+<ol><li>Abre Godot, selecciona <b>New Project</b>, escribe <code>Recolector2D</code> y crea el proyecto con renderizador recomendado para tu equipo.</li><li>En <b>Project &gt; Project Settings &gt; Display &gt; Window</b>, configura una ventana de 960 × 540. En <b>Input Map</b> agrega las acciones <code>mover_izquierda</code>, <code>mover_derecha</code>, <code>mover_arriba</code>, <code>mover_abajo</code> y asigna A/D/W/S o flechas.</li><li>Crea una escena <code>Player.tscn</code> con raíz <code>CharacterBody2D</code> llamada <code>Player</code>. Añade <code>CollisionShape2D</code> con forma <code>CircleShape2D</code> y un <code>Polygon2D</code> o <code>Sprite2D</code> como apariencia. Guarda en <code>scenes/</code>.</li><li>Adjunta el script <code>scripts/player.gd</code> a Player:</li></ol>
+<pre class="code-wrap"><code class="language-gdscript">extends CharacterBody2D
+
+@export var speed: float = 260.0
+
+func _physics_process(_delta: float) -&gt; void:
+    var direction := Input.get_vector(
+        &quot;mover_izquierda&quot;, &quot;mover_derecha&quot;,
+        &quot;mover_arriba&quot;, &quot;mover_abajo&quot;
+    )
+    velocity = direction * speed
+    move_and_slide()
+    var bounds := get_viewport_rect().size
+    position = position.clamp(Vector2(16, 16), bounds - Vector2(16, 16))</code><button class="copy-code" type="button">Copiar código</button></pre>
+<ol start="5"><li>Crea <code>Coin.tscn</code> con raíz <code>Area2D</code> llamada <code>Coin</code>, añade <code>CollisionShape2D</code> con <code>CircleShape2D</code> y un <code>Polygon2D</code> de color amarillo. Adjunta:</li></ol>
+<pre class="code-wrap"><code class="language-gdscript">extends Area2D
+signal collected
+
+func _ready() -&gt; void:
+    body_entered.connect(_on_body_entered)
+
+func _on_body_entered(body: Node2D) -&gt; void:
+    if body is CharacterBody2D:
+        collected.emit()
+        queue_free()</code><button class="copy-code" type="button">Copiar código</button></pre>
+<ol start="6"><li>Crea <code>Main.tscn</code> con raíz <code>Node2D</code> llamada <code>Main</code>. Añade una instancia de <code>Player</code> como hijo directo y crea un nodo <code>Node2D</code> llamado <code>Coins</code>; coloca dentro varias instancias de <code>Coin</code>. Distribúyelas dentro del área visible.</li><li>Añade un <code>CanvasLayer</code> llamado <code>HUD</code> y, dentro, un <code>VBoxContainer</code> con cuatro nodos: <code>ScoreLabel</code> (Label), <code>StateLabel</code> (Label), <code>StartButton</code> (Button, texto “Iniciar”) y <code>RestartButton</code> (Button, texto “Volver a jugar”). El árbol debe quedar así: <code>Main/Player</code>, <code>Main/Coins/Coin...</code> y <code>Main/HUD/VBoxContainer/(ScoreLabel, StateLabel, StartButton, RestartButton)</code>.</li><li>Adjunta a Main el script siguiente. Los botones se conectan desde código para que no tengas que crear conexiones manuales:</li></ol>
+<pre class="code-wrap"><code class="language-gdscript">extends Node2D
+
+@onready var score_label: Label = $HUD/VBoxContainer/ScoreLabel
+@onready var state_label: Label = $HUD/VBoxContainer/StateLabel
+@onready var start_button: Button = $HUD/VBoxContainer/StartButton
+@onready var restart_button: Button = $HUD/VBoxContainer/RestartButton
+@onready var player: CharacterBody2D = $Player
+@onready var coins_root: Node2D = $Coins
+
+var score: int = 0
+var total_coins: int = 0
+var started: bool = false
+
+func _ready() -&gt; void:
+    var coins := coins_root.get_children()
+    total_coins = coins.size()
+    player.set_physics_process(false)
+    for coin in coins:
+        coin.collected.connect(_on_coin_collected)
+        coin.hide()
+    start_button.pressed.connect(_start_game)
+    restart_button.pressed.connect(_restart_game)
+    restart_button.hide()
+    state_label.text = &quot;Presiona Iniciar para comenzar&quot;
+    _update_score()
+
+func _start_game() -&gt; void:
+    started = true
+    player.position = get_viewport_rect().size / 2.0
+    player.set_physics_process(true)
+    for coin in coins_root.get_children():
+        coin.show()
+    start_button.hide()
+    state_label.text = &quot;¡Recoge todas las monedas!&quot;
+    if total_coins == 0:
+        _finish_game()
+
+func _on_coin_collected() -&gt; void:
+    if not started:
+        return
+    score += 1
+    _update_score()
+    if score &gt;= total_coins:
+        _finish_game()
+
+func _finish_game() -&gt; void:
+    started = false
+    player.set_physics_process(false)
+    state_label.text = &quot;¡Nivel completado!&quot;
+    restart_button.show()
+
+func _restart_game() -&gt; void:
+    get_tree().reload_current_scene()
+
+func _update_score() -&gt; void:
+    score_label.text = &quot;Monedas: %d / %d&quot; % [score, total_coins]</code><button class="copy-code" type="button">Copiar código</button></pre>
+<div class="warning"><b>Importante para que funcione:</b> las monedas deben ser hijas del nodo <code>Coins</code> y llamarse/instanciarse desde la escena Coin. La ruta de los nodos HUD debe coincidir exactamente con el árbol indicado. Cada Coin emite la señal <code>collected</code> y se elimina con <code>queue_free()</code>.</div>
+<ol start="8"><li>Define <code>Main.tscn</code> como escena principal desde <b>Project &gt; Project Settings &gt; Application &gt; Run</b> o pulsa el botón para establecer la escena actual.</li><li>Ejecuta con F6 para probar la escena o F5 para el proyecto. Comprueba movimiento, límites, colisiones y puntuación.</li><li>Para una pantalla de inicio y final, crea un <code>Control</code> con botones Iniciar/Reintentar y un panel de resultado. Ocúltalo al empezar; al terminar, muéstralo. Conecta las señales <code>pressed</code> de los botones a funciones que reinicien la escena o cambien el estado del juego.</li></ol>
+<h3>Pruebas mínimas</h3><ul><li>El personaje se mueve en cuatro direcciones y no se desplaza cuando no pulsas nada.</li><li>Una moneda desaparece una sola vez y el contador aumenta exactamente uno.</li><li>Al recoger todas las monedas aparece el mensaje de nivel completado.</li><li>La escena se ejecuta con el tamaño de ventana definido.</li></ul>
+<p>Este ejemplo enseña nodos, escenas, físicas, señales y HUD. Para una versión con enemigos, temporizador y reinicio completo, sigue el tutorial oficial <a href="https://docs.godotengine.org/es/4.x/getting_started/first_2d_game/index.html" target="_blank" rel="noopener">Tu primer juego 2D</a>.</p>
+</div>
+      <label class="chapter-complete"><input type="checkbox" class="chapter-check" data-check="3"> Marcar capítulo como completado</label>
+      <a class="back-index" href="#indice">↑ Volver al índice</a>
+    </section><section class="manual-chapter" id="capitulo-4" data-chapter="4">
+      <div class="chapter-kicker">CAPÍTULO 04</div>
+      <h2>Desarrollo de aplicaciones móviles</h2>
+      <div class="chapter-body">
+<p>Una aplicación móvil presenta información y permite realizar acciones con controles táctiles. Flutter usa Dart para crear interfaces desde una base de código; Android Studio ofrece emulador y herramientas Android. MIT App Inventor permite aprender con bloques visuales.</p>
+<h3>Herramientas</h3><ul><li><b>Flutter/Dart:</b> aplicaciones multiplataforma con widgets.</li><li><b>Android Studio:</b> SDK, emuladores y herramientas de compilación Android.</li><li><b>VS Code:</b> editor ligero con extensiones oficiales de Flutter y Dart.</li><li><b>MIT App Inventor:</b> prototipos educativos mediante programación por bloques.</li></ul>
+<h3>Tutorial: lista de tareas en Flutter</h3><ol><li>Instala Flutter siguiendo <a href="https://docs.flutter.dev/get-started/install" target="_blank" rel="noopener">la guía oficial</a> para tu sistema.</li><li>Instala Android Studio y un Android SDK compatible si probarás en emulador.</li><li>En terminal ejecuta <code>flutter doctor</code> y resuelve los avisos antes de continuar.</li><li>Ejecuta <code>flutter create lista_tareas</code> y entra en la carpeta con <code>cd lista_tareas</code>.</li><li>Abre <code>lib/main.dart</code> y reemplaza su contenido por este ejemplo.</li></ol>
+<pre class="code-wrap"><code class="language-dart">import &#x27;package:flutter/material.dart&#x27;;
+
+void main() =&gt; runApp(const TodoApp());
+
+class Task {
+  Task(this.title);
+  final String title;
+  bool done = false;
+}
+
+class TodoApp extends StatelessWidget {
+  const TodoApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: &#x27;Mi lista de tareas&#x27;,
+      theme: ThemeData(colorSchemeSeed: Colors.deepPurple,
+          useMaterial3: true),
+      home: const TodoPage(),
+    );
+  }
+}
+
+class TodoPage extends StatefulWidget {
+  const TodoPage({super.key});
+
+  @override
+  State&lt;TodoPage&gt; createState() =&gt; _TodoPageState();
+}
+
+class _TodoPageState extends State&lt;TodoPage&gt; {
+  final List&lt;Task&gt; tasks = [];
+  final TextEditingController controller = TextEditingController();
+
+  void addTask() {
+    final title = controller.text.trim();
+    if (title.isEmpty) return;
+    setState(() {
+      tasks.add(Task(title));
+      controller.clear();
+    });
+  }
+
+  void toggleTask(int index, bool? value) {
+    setState(() =&gt; tasks[index].done = value ?? false);
+  }
+
+  void deleteTask(int index) {
+    setState(() =&gt; tasks.removeAt(index));
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text(&#x27;Mis tareas&#x27;)),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(children: [
+          Row(children: [
+            Expanded(child: TextField(
+              controller: controller,
+              decoration: const InputDecoration(
+                labelText: &#x27;Nueva tarea&#x27;, border: OutlineInputBorder()),
+              onSubmitted: (_) =&gt; addTask(),
+            )),
+            const SizedBox(width: 8),
+            FilledButton(onPressed: addTask, child: const Icon(Icons.add)),
+          ]),
+          const SizedBox(height: 16),
+          Expanded(child: tasks.isEmpty
+            ? const Center(child: Text(&#x27;Aún no tienes tareas.&#x27;))
+            : ListView.builder(
+                itemCount: tasks.length,
+                itemBuilder: (context, index) {
+                  final task = tasks[index];
+                  return Card(child: ListTile(
+                    leading: Checkbox(value: task.done,
+                      onChanged: (value) =&gt; toggleTask(index, value)),
+                    title: Text(task.title,
+                      style: TextStyle(decoration: task.done
+                        ? TextDecoration.lineThrough : null)),
+                    trailing: IconButton(
+                      tooltip: &#x27;Eliminar tarea&#x27;,
+                      icon: const Icon(Icons.delete_outline),
+                      onPressed: () =&gt; deleteTask(index),
+                    ),
+                  ));
+                },
+              )),
+        ]),
+      ),
+    );
+  }
+}</code><button class="copy-code" type="button">Copiar código</button></pre>
+<ol start="6"><li>Conecta un emulador o dispositivo con depuración USB habilitada y autorizada.</li><li>En la carpeta del proyecto ejecuta <code>flutter run</code>. Para compilar una versión Android de distribución, revisa la guía oficial de despliegue y firma; no compartas claves de firma.</li><li>Prueba agregar una tarea, marcarla, desmarcarla, eliminarla y enviar el formulario con el campo vacío.</li></ol>
+<div class="warning"><b>Alcance:</b> este ejemplo mantiene tareas en memoria. Al cerrar la aplicación se pierden; para conservarlas agrega persistencia local o una base de datos después de estudiar almacenamiento seguro.</div>
+</div>
+      <label class="chapter-complete"><input type="checkbox" class="chapter-check" data-check="4"> Marcar capítulo como completado</label>
+      <a class="back-index" href="#indice">↑ Volver al índice</a>
+    </section><section class="manual-chapter" id="capitulo-5" data-chapter="5">
+      <div class="chapter-kicker">CAPÍTULO 05</div>
+      <h2>Desarrollo de páginas web</h2>
+      <div class="chapter-body">
+<p>HTML describe la estructura, CSS define la presentación y JavaScript agrega comportamiento. Se ejecutan en el navegador y permiten crear una página adaptable sin instalar un servidor para una primera práctica.</p>
+<h3>Proyecto: página personal</h3><ol><li>Crea una carpeta <code>mi-portafolio</code> con <code>index.html</code>, <code>styles.css</code> y <code>script.js</code>.</li><li>En VS Code abre la carpeta completa.</li><li>Copia los tres archivos siguientes. Cambia el texto de ejemplo por información propia y usa imágenes que tengas permiso de publicar.</li></ol>
+<h4>index.html</h4>
+<pre class="code-wrap"><code class="language-html">&lt;!doctype html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;Portafolio personal de proyectos digitales&quot;&gt;
+  &lt;title&gt;Mi portafolio&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;
+  &lt;script src=&quot;script.js&quot; defer&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header class=&quot;site-header&quot;&gt;
+    &lt;a class=&quot;brand&quot; href=&quot;#inicio&quot;&gt;MiPortafolio&lt;/a&gt;
+    &lt;nav aria-label=&quot;Navegación principal&quot;&gt;
+      &lt;a href=&quot;#sobre-mi&quot;&gt;Sobre mí&lt;/a&gt;&lt;a href=&quot;#habilidades&quot;&gt;Habilidades&lt;/a&gt;
+      &lt;a href=&quot;#proyectos&quot;&gt;Proyectos&lt;/a&gt;&lt;a href=&quot;#contacto&quot;&gt;Contacto&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;section id=&quot;inicio&quot; class=&quot;hero&quot;&gt;
+      &lt;p class=&quot;eyebrow&quot;&gt;Hola, soy&lt;/p&gt;&lt;h1&gt;Tu nombre&lt;/h1&gt;
+      &lt;p&gt;Estudiante y creador en formación. Me gusta aprender y construir.&lt;/p&gt;
+      &lt;a class=&quot;button&quot; href=&quot;#proyectos&quot;&gt;Ver proyectos&lt;/a&gt;
+    &lt;/section&gt;
+    &lt;section id=&quot;sobre-mi&quot;&gt;&lt;h2&gt;Sobre mí&lt;/h2&gt;
+      &lt;p&gt;Escribe una breve presentación honesta sobre tus intereses y objetivos.&lt;/p&gt;
+    &lt;/section&gt;
+    &lt;section id=&quot;habilidades&quot;&gt;&lt;h2&gt;Habilidades&lt;/h2&gt;
+      &lt;ul class=&quot;skills&quot;&gt;&lt;li&gt;HTML&lt;/li&gt;&lt;li&gt;CSS&lt;/li&gt;&lt;li&gt;JavaScript&lt;/li&gt;&lt;/ul&gt;
+    &lt;/section&gt;
+    &lt;section id=&quot;proyectos&quot;&gt;&lt;h2&gt;Proyectos&lt;/h2&gt;
+      &lt;article class=&quot;project&quot;&gt;&lt;h3&gt;Proyecto inicial&lt;/h3&gt;
+        &lt;p&gt;Describe el problema, tu solución y las herramientas utilizadas.&lt;/p&gt;
+      &lt;/article&gt;
+    &lt;/section&gt;
+    &lt;section id=&quot;contacto&quot;&gt;&lt;h2&gt;Contacto&lt;/h2&gt;
+      &lt;p&gt;Correo: &lt;a href=&quot;mailto:tu-correo@ejemplo.com&quot;&gt;tu-correo@ejemplo.com&lt;/a&gt;&lt;/p&gt;
+      &lt;button id=&quot;saludo&quot; type=&quot;button&quot;&gt;Mostrar saludo&lt;/button&gt;
+      &lt;p id=&quot;mensaje&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;&lt;p&gt;© &lt;span id=&quot;year&quot;&gt;&lt;/span&gt; Tu nombre&lt;/p&gt;&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code><button class="copy-code" type="button">Copiar código</button></pre>
+<h4>styles.css</h4>
+<pre class="code-wrap"><code class="language-css">* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: system-ui, sans-serif;
+  line-height: 1.6; color: #172033; background: #f4f6fb; }
+.site-header { display: flex; justify-content: space-between; gap: 1rem;
+  align-items: center; padding: 1rem 6%; background: #101a32; color: white; }
+.brand { color: #69e6ff; font-weight: 800; text-decoration: none; }
+nav { display: flex; flex-wrap: wrap; gap: 1rem; }
+nav a { color: white; text-decoration: none; }
+main { width: min(100% - 2rem, 900px); margin: auto; }
+section { padding: 4rem 0; scroll-margin-top: 1rem; }
+.hero { min-height: 55vh; display: grid; align-content: center; }
+h1 { font-size: clamp(2.5rem, 8vw, 5rem); margin: .1em 0; }
+.eyebrow { color: #5a38c8; font-weight: 700; }
+.button, button { display: inline-block; padding: .75rem 1rem;
+  border: 0; border-radius: .6rem; background: #5a38c8; color: white;
+  font: inherit; text-decoration: none; cursor: pointer; }
+.skills { display: flex; flex-wrap: wrap; gap: .7rem; padding: 0; list-style: none; }
+.skills li, .project { background: white; padding: 1rem; border-radius: .8rem; }
+footer { padding: 1.5rem; text-align: center; background: #101a32; color: white; }
+@media (max-width: 620px) {
+  .site-header { align-items: flex-start; flex-direction: column; }
+  nav { gap: .7rem; }
+  section { padding: 2.5rem 0; }
+}</code><button class="copy-code" type="button">Copiar código</button></pre>
+<h4>script.js</h4>
+<pre class="code-wrap"><code class="language-javascript">const year = document.querySelector(&#x27;#year&#x27;);
+if (year) year.textContent = new Date().getFullYear();
+
+const button = document.querySelector(&#x27;#saludo&#x27;);
+const message = document.querySelector(&#x27;#mensaje&#x27;);
+button?.addEventListener(&#x27;click&#x27;, () =&gt; {
+  if (message) message.textContent = &#x27;¡Gracias por visitar mi portafolio!&#x27;;
+});</code><button class="copy-code" type="button">Copiar código</button></pre>
+<p><b>Cómo comprobar:</b> abre <code>index.html</code> en un navegador o usa Live Server; cambia el ancho de la ventana; prueba los enlaces del menú; pulsa el botón y revisa que aparezca el mensaje. Usa las herramientas de desarrollador del navegador para revisar errores de consola.</p>
+</div>
+      <label class="chapter-complete"><input type="checkbox" class="chapter-check" data-check="5"> Marcar capítulo como completado</label>
+      <a class="back-index" href="#indice">↑ Volver al índice</a>
+    </section><section class="manual-chapter" id="capitulo-6" data-chapter="6">
+      <div class="chapter-kicker">CAPÍTULO 06</div>
+      <h2>Comparación de las tres áreas</h2>
+      <div class="chapter-body">
+<p>Las tres áreas comparten lógica, resolución de problemas, pruebas y organización, pero sus resultados y herramientas cambian.</p>
+<table><thead><tr><th>Área</th><th>Herramientas / lenguajes</th><th>Complejidad inicial</th><th>Primer proyecto</th></tr></thead><tbody><tr><td>Videojuegos</td><td>Godot/GDScript, Unity/C#, Unreal/Blueprints o C++</td><td>Media: combina lógica, escenas, físicas y recursos.</td><td>Juego 2D de recoger objetos.</td></tr><tr><td>Aplicaciones móviles</td><td>Flutter/Dart, Android Studio, App Inventor</td><td>Media: interfaz, estado, ciclo de vida y permisos.</td><td>Lista de tareas.</td></tr><tr><td>Páginas web</td><td>HTML, CSS, JavaScript, navegador</td><td>Básica a media: estructura, estilos y eventos.</td><td>Portafolio personal.</td></tr></tbody></table>
+<p>Elige según lo que quieras construir. Para comprender rápidamente la lógica, Scratch o una página web sencilla son buenas puertas de entrada. Si tu meta son videojuegos, comienza con un proyecto 2D pequeño antes de pasar a 3D.</p>
+</div>
+      <label class="chapter-complete"><input type="checkbox" class="chapter-check" data-check="6"> Marcar capítulo como completado</label>
+      <a class="back-index" href="#indice">↑ Volver al índice</a>
+    </section><section class="manual-chapter" id="capitulo-7" data-chapter="7">
+      <div class="chapter-kicker">CAPÍTULO 07</div>
+      <h2>Errores frecuentes y soluciones</h2>
+      <div class="chapter-body">
+<table><thead><tr><th>Problema</th><th>Causa probable</th><th>Cómo identificarlo</th><th>Qué hacer</th></tr></thead><tbody>
+<tr><td>Error de sintaxis</td><td>Paréntesis, comillas, sangría o nombre mal escrito.</td><td>El editor marca una línea o el intérprete no inicia.</td><td>Lee el primer error, revisa la línea y las anteriores; corrige una cosa a la vez.</td></tr>
+<tr><td>Programa no ejecuta</td><td>Herramienta no instalada o terminal en carpeta incorrecta.</td><td>Comando no reconocido o archivo no encontrado.</td><td>Verifica instalación, PATH, carpeta actual y nombre exacto del archivo.</td></tr>
+<tr><td>Archivo no aparece</td><td>Guardado en una carpeta distinta o extensión oculta.</td><td>La ruta del proyecto no coincide.</td><td>Usa el explorador del editor y evita duplicar extensiones como <code>.txt</code>.</td></tr>
+<tr><td>Escena de Godot vacía</td><td>Escena principal incorrecta o nodo no agregado.</td><td>El proyecto inicia sin el contenido esperado.</td><td>Revisa la escena principal, el árbol de nodos y los errores del panel Output.</td></tr>
+<tr><td>Flutter no compila</td><td>SDK, dependencia o dispositivo sin configurar.</td><td><code>flutter doctor</code> muestra alertas o build falla.</td><td>Ejecuta diagnóstico, lee el primer error y sigue la guía oficial del componente que falta.</td></tr>
+<tr><td>Web sin estilos</td><td>Ruta CSS incorrecta o archivo no guardado.</td><td>Se ve HTML sin diseño.</td><td>Comprueba el nombre/ruta en <code>link</code> y recarga sin caché.</td></tr>
+<tr><td>Conexión/API falla</td><td>URL, clave, permisos, CORS o red.</td><td>Error de red o respuesta HTTP no exitosa.</td><td>Verifica URL, credenciales públicas permitidas, permisos y consola; nunca publiques secretos.</td></tr>
+</tbody></table>
+<h3>Método de depuración en cinco pasos</h3><ol><li>Reproduce el problema.</li><li>Lee el mensaje completo, empezando por el primer error.</li><li>Identifica archivo y línea.</li><li>Cambia una sola cosa y vuelve a probar.</li><li>Registra la solución para evitar repetirla.</li></ol>
+</div>
+      <label class="chapter-complete"><input type="checkbox" class="chapter-check" data-check="7"> Marcar capítulo como completado</label>
+      <a class="back-index" href="#indice">↑ Volver al índice</a>
+    </section><section class="manual-chapter" id="capitulo-8" data-chapter="8">
+      <div class="chapter-kicker">CAPÍTULO 08</div>
+      <h2>Ejercicios prácticos</h2>
+      <div class="chapter-body">
+<h3>Nivel básico</h3><ol><li>Declara variables para tu alias, edad y juego favorito; muestra una frase con esos datos.</li><li>Calcula el promedio de tres calificaciones y muestra si es aprobatorio según un umbral que tú declares.</li><li>Crea una función que convierta minutos en segundos.</li></ol>
+<details class="solution"><summary>Soluciones orientativas del nivel básico</summary><pre class="code-wrap"><code class="language-python">alias = &quot;Player01&quot;
+edad = 18
+juego = &quot;Aventura&quot;
+print(alias, edad, juego)
+
+calificaciones = [8, 9, 7]
+promedio = sum(calificaciones) / len(calificaciones)
+print(promedio, &quot;Aprobado&quot; if promedio &gt;= 7 else &quot;No aprobado&quot;)
+
+def a_segundos(minutos):
+    return minutos * 60
+print(a_segundos(5))</code><button class="copy-code" type="button">Copiar código</button></pre></details>
+<h3>Nivel intermedio</h3><ol><li>Modifica la lista Flutter para editar una tarea antes de borrarla.</li><li>Añade al portafolio una tarjeta nueva y un filtro por categoría.</li><li>En Godot, limita el movimiento del personaje dentro del área visible.</li></ol>
+<details class="solution"><summary>Pistas del nivel intermedio</summary><ul><li>Para editar Flutter, abre un diálogo con un campo de texto y actualiza el elemento dentro de <code>setState</code>.</li><li>Para filtrar tarjetas, añade un atributo <code>data-categoria</code> y compara el valor seleccionado.</li><li>Para limitar al personaje, usa <code>clampf(position.x, min_x, max_x)</code> y su equivalente en Y.</li></ul></details>
+<h3>Nivel de aplicación</h3><ol><li>Construye un mini juego con tres niveles y puntuación.</li><li>Amplía la lista Flutter para guardar localmente las tareas.</li><li>Publica tu portafolio en un hosting estático y valida el diseño móvil.</li></ol>
+<p><b>Entrega:</b> captura o enlace del resultado, descripción del objetivo, herramientas usadas, dificultad encontrada y cómo la resolviste.</p>
+</div>
+      <label class="chapter-complete"><input type="checkbox" class="chapter-check" data-check="8"> Marcar capítulo como completado</label>
+      <a class="back-index" href="#indice">↑ Volver al índice</a>
+    </section><section class="manual-chapter" id="capitulo-9" data-chapter="9">
+      <div class="chapter-kicker">CAPÍTULO 09</div>
+      <h2>Recursos para continuar aprendiendo</h2>
+      <div class="chapter-body">
+<ul class="resource-list"><li><a href="https://docs.godotengine.org/es/4.x/" target="_blank" rel="noopener">Documentación oficial de Godot 4</a> — motor, GDScript y tutoriales 2D.</li><li><a href="https://unity.com/learn" target="_blank" rel="noopener">Unity Learn</a> — cursos y proyectos guiados.</li><li><a href="https://dev.epicgames.com/documentation/" target="_blank" rel="noopener">Unreal Engine Documentation</a> — editor, Blueprints y C++.</li><li><a href="https://scratch.mit.edu/" target="_blank" rel="noopener">Scratch</a> — programación por bloques.</li><li><a href="https://docs.flutter.dev/" target="_blank" rel="noopener">Flutter Documentation</a> — instalación, widgets y despliegue.</li><li><a href="https://developer.android.com/studio" target="_blank" rel="noopener">Android Studio</a> — entorno Android.</li><li><a href="https://appinventor.mit.edu/" target="_blank" rel="noopener">MIT App Inventor</a> — aplicaciones con bloques.</li><li><a href="https://code.visualstudio.com/docs" target="_blank" rel="noopener">Visual Studio Code</a> — editor y depuración.</li><li><a href="https://www.w3schools.com/" target="_blank" rel="noopener">W3Schools</a> — referencias y ejemplos web.</li><li><a href="https://www.freecodecamp.org/learn/" target="_blank" rel="noopener">freeCodeCamp</a> — práctica guiada.</li><li><a href="https://docs.github.com/" target="_blank" rel="noopener">GitHub Docs</a> — repositorios y colaboración.</li></ul>
+<p>Prioriza la documentación oficial para confirmar cambios de versión. Los cursos de terceros son complementarios; compara la fecha de actualización y prueba los ejemplos en un proyecto separado.</p>
+</div>
+      <label class="chapter-complete"><input type="checkbox" class="chapter-check" data-check="9"> Marcar capítulo como completado</label>
+      <a class="back-index" href="#indice">↑ Volver al índice</a>
+    </section><section class="manual-chapter" id="capitulo-10" data-chapter="10">
+      <div class="chapter-kicker">CAPÍTULO 10</div>
+      <h2>Proyecto final</h2>
+      <div class="chapter-body">
+<p>Elige una ruta y construye un producto pequeño pero terminado. La meta es demostrar el proceso completo, no competir por la cantidad de funciones.</p>
+<div class="concept-grid"><article><h3>Opción A · Videojuego 2D</h3><p>Objetivo: juego con personaje, objetivo, puntuación y pantalla final. Herramienta: Godot 4. Entrega: proyecto, controles, instrucciones y video corto de prueba.</p></article><article><h3>Opción B · Aplicación móvil</h3><p>Objetivo: lista de tareas con alta, completado y eliminación. Herramienta: Flutter. Entrega: código, capturas en emulador y explicación de estado y almacenamiento.</p></article><article><h3>Opción C · Página web</h3><p>Objetivo: portafolio responsivo con navegación y una interacción. Herramientas: HTML, CSS y JavaScript. Entrega: archivos y enlace publicado si tienes hosting.</p></article></div>
+<h3>Procedimiento</h3><ol><li>Escribe el problema y a quién ayuda tu proyecto.</li><li>Define tres funciones indispensables y separa las mejoras opcionales.</li><li>Dibuja un boceto de pantallas o escenas.</li><li>Prepara herramientas, carpetas y recursos con licencia adecuada.</li><li>Construye una función a la vez y realiza pruebas.</li><li>Documenta instalación, ejecución, controles y limitaciones.</li><li>Presenta el proyecto y reflexiona sobre lo que mejorarías.</li></ol>
+<h3>Rúbrica sugerida</h3><table><thead><tr><th>Criterio</th><th>Ponderación</th><th>Qué se observa</th></tr></thead><tbody><tr><td>Funcionamiento</td><td>30 %</td><td>Las funciones principales se ejecutan.</td></tr><tr><td>Organización</td><td>20 %</td><td>Archivos y nombres claros.</td></tr><tr><td>Diseño y accesibilidad</td><td>15 %</td><td>Lectura, navegación y adaptación.</td></tr><tr><td>Pruebas</td><td>20 %</td><td>Casos probados y errores corregidos.</td></tr><tr><td>Documentación</td><td>15 %</td><td>Instrucciones y reflexión comprensibles.</td></tr></tbody></table>
+</div>
+      <label class="chapter-complete"><input type="checkbox" class="chapter-check" data-check="10"> Marcar capítulo como completado</label>
+      <a class="back-index" href="#indice">↑ Volver al índice</a>
+    </section><section class="manual-chapter" id="capitulo-11" data-chapter="11">
+      <div class="chapter-kicker">CAPÍTULO 11</div>
+      <h2>Glosario de programación</h2>
+      <div class="chapter-body">
+<dl class="glossary"><dt>Algoritmo</dt><dd>Pasos ordenados para resolver una tarea.</dd><dt>API</dt><dd>Interfaz que permite que dos programas se comuniquen.</dd><dt>Array / lista</dt><dd>Colección ordenada de elementos.</dd><dt>Bug</dt><dd>Error o comportamiento no deseado.</dd><dt>Compilador</dt><dd>Herramienta que transforma código a otra representación ejecutable.</dd><dt>Condición</dt><dd>Expresión evaluada como verdadera o falsa.</dd><dt>Depuración</dt><dd>Proceso de localizar y corregir errores.</dd><dt>Evento</dt><dd>Acción que puede activar una respuesta del programa.</dd><dt>Función</dt><dd>Bloque reutilizable de instrucciones.</dd><dt>IDE</dt><dd>Entorno integrado para editar, ejecutar y depurar.</dd><dt>Interfaz</dt><dd>Medio con el que una persona interactúa con un sistema.</dd><dt>Loop / ciclo</dt><dd>Repetición controlada de instrucciones.</dd><dt>Objeto</dt><dd>Instancia con datos y comportamiento en programación orientada a objetos.</dd><dt>Repositorio</dt><dd>Espacio donde se guarda un proyecto y su historial.</dd><dt>SDK</dt><dd>Conjunto de herramientas para desarrollar para una plataforma.</dd><dt>Variable</dt><dd>Nombre que referencia un valor.</dd></dl>
+</div>
+      <label class="chapter-complete"><input type="checkbox" class="chapter-check" data-check="11"> Marcar capítulo como completado</label>
+      <a class="back-index" href="#indice">↑ Volver al índice</a>
+    </section><section class="manual-chapter" id="capitulo-12" data-chapter="12">
+      <div class="chapter-kicker">CAPÍTULO 12</div>
+      <h2>Conclusión</h2>
+      <div class="chapter-body">
+<p>Aprender programación es una práctica gradual. Cada proyecto enseña a plantear problemas, dividirlos, escribir instrucciones, probar resultados y corregir fallos. No necesitas dominar todas las herramientas a la vez.</p><p>Empieza con una meta alcanzable, conserva versiones de tu trabajo y pide retroalimentación. Después amplía tu proyecto con funciones nuevas. <b>PIXEL FORGE — Imagina, aprende, experimenta y crea tu propio mundo digital.</b></p>
+</div>
+      <label class="chapter-complete"><input type="checkbox" class="chapter-check" data-check="12"> Marcar capítulo como completado</label>
+      <a class="back-index" href="#indice">↑ Volver al índice</a>
+    </section>
+<section class="manual-finish"><h2>¡Has llegado al final!</h2><p>Tu siguiente paso es aplicar lo aprendido en un proyecto propio y documentar qué mejoraste.</p><a class="manual-primary" href="./index.html#aprendizaje">Volver a la Biblioteca</a></section>
+</article></div></main>
+<footer class="manual-footer"><b>PIXEL FORGE</b><p>Imagina, aprende, experimenta y crea tu propio mundo digital.</p><small>Material educativo de consulta. Verifica requisitos, políticas y versiones en las fuentes oficiales.</small></footer>
+<script src="./js/manuales.js" defer></script></body></html>

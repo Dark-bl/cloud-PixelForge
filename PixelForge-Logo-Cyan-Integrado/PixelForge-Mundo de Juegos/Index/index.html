@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="./assets/pixelforge-logo-cyan.png">
+    <title>PixelForge V9.1 — Mundo Gamer</title>
+    <meta name="description" content="PixelForge: videojuegos, biblioteca personal, música de videojuegos y comunidad gamer.">
+    <meta property="og:title" content="PixelForge V9.1 — Mundo Gamer">
+    <meta property="og:description" content="PixelForge: videojuegos, biblioteca personal, música de videojuegos y comunidad gamer.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" href="./css/roles.css">
+    <link rel="stylesheet" href="./css/sync.css">
+    <link rel="stylesheet" href="./css/manuales.css">
+
+
+    </head>
+<body>
+    <header class="pf-header">
+        <a class="pf-brand" href="#inicio" aria-label="PixelForge, ir al inicio">
+            <img class="pf-brand-logo" src="./assets/pixelforge-logo-cyan.png" alt="PIXEL FORGE">
+        </a>
+        <div class="pf-navigation-area">
+            <button class="pf-menu-toggle" id="pfMenuToggle" type="button"
+                    aria-expanded="false" aria-controls="pfMainNav">
+                <span class="pf-menu-toggle-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span>MENÚ</span>
+            </button>
+            <nav class="pf-main-nav" id="pfMainNav" aria-label="Navegación principal">
+                <a href="#inicio" aria-current="page">Inicio</a>
+                <a href="#juegos">Juegos</a>
+                <a href="#aprendizaje">Aprender</a>
+                <a href="#comunidad">Comunidad</a>
+                <a href="#biblioteca" id="pfAccountMainLink" class="pf-menu-extra">Cuentas y biblioteca</a>
+                <a href="#perfil" id="pfProfileNavLink" class="pf-menu-extra pf-profile-nav">Mi perfil</a>
+                <a href="#proponer" class="pf-menu-extra">Proponer</a>
+                <a href="#kids" class="pf-menu-extra">Zona infantil</a>
+                <a href="#musica" class="pf-menu-extra">Música</a>
+                <a href="#streamers" class="pf-menu-extra">Streams</a>
+                <a href="#creadores" class="pf-menu-extra">Creadores</a>
+                <a href="#reportes" class="pf-menu-extra">Reportes</a>
+                <a href="#contactos" class="pf-menu-extra">Contacto</a>
+                <a href="#administracion" id="pfAdminNavLink" class="pf-menu-extra" hidden>Administración</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="portada" id="inicio">
+            <p class="etiqueta">BIENVENIDO AL MUNDO GAMER</p>
+            <h2>DESCUBRE TU<br>PRÓXIMA AVENTURA</h2>
+            <p>Explora videojuegos, conoce nuevos mundos y encuentra tus favoritos.</p>
+            <a href="#juegos" class="boton">EXPLORAR JUEGOS</a>
+        </section>
+        <section class="seccion comunidad-destacada" id="comunidad-destacada">
+            <h2>Lo más reciente de la comunidad</h2>
+            <p class="descripcion">Descubre lo que comparten otros jugadores y entra a la comunidad para publicar o participar.</p>
+            <div id="vistaPreviaPublicaciones" class="lista-publicaciones pf-vista-previa">
+                <p>Las publicaciones recientes aparecerán aquí cuando se cargue la comunidad.</p>
+            </div>
+            <a href="#comunidad" class="boton">Ver toda la comunidad</a>
+        </section>
+
+        <section class="seccion" id="juegos">
+            <h2>Catálogo de videojuegos</h2>
+            <p class="descripcion">Explora los juegos destacados y los videojuegos que la comunidad proponga y la administración apruebe. Las edades sugeridas son orientativas; consulta siempre la clasificación oficial de cada juego.</p>
+
+            <div class="barra-herramientas-juegos">
+                <label class="sr-only" for="buscadorJuegos">Buscar videojuego</label>
+                <input id="buscadorJuegos" type="search" placeholder="Buscar un videojuego..." autocomplete="off">
+                <button id="mostrarFavoritos" class="boton boton-secundario" type="button" aria-pressed="false">☆ Ver favoritos</button>
+            </div>
+
+            <div class="pestanas-catalogo" role="tablist">
+                <button type="button" class="pestana-btn activa" id="tabTodosJuegos">🎮 Catálogo General</button>
+                <button type="button" class="pestana-btn" id="tabApiJuegos">🌐 Explorar APIs de videojuegos</button>
+                <button type="button" class="pestana-btn" id="tabComunidadJuegos">👥 Propuestos por la comunidad</button>
+            </div>
+
+            <div id="seccionApiJuegos" hidden>
+                <div class="pf-api-heading">
+                    <h3 class="subtitulo-catalogo">Videojuegos de API externas</h3>
+                    <p class="descripcion">Explora información de videojuegos publicada por proveedores externos. Los enlaces llevan a la fuente original.</p>
+                </div>
+                <div class="catalogo-dinamico" id="contenedorApiJuegos" aria-live="polite">
+                    <p class="mensaje-catalogo-vacio">Cargando videojuegos desde la API...</p>
+                </div>
+            </div>
+
+            <div id="seccionCatalogoGeneral">
+                <p class="pf-catalog-note">Usa el buscador para encontrar videojuegos por nombre.</p>
+
+            <h3 class="subtitulo-catalogo">Juegos aprobados por la comunidad</h3>
+            <div class="catalogo-dinamico" id="catalogoDinamico" aria-live="polite">
+                <p class="mensaje-catalogo-vacio">Los juegos aprobados por la administración aparecerán aquí. Mientras tanto, puedes explorar los juegos destacados.</p>
+            </div>
+
+            <h3 class="subtitulo-catalogo">Juegos destacados</h3>
+            <div class="contenedor-juegos" id="contenedorJuegos">
+                <article class="juego" data-juego="minecraft" data-genero="Supervivencia" data-edad="7+">
+                    <div class="imagen-juego-contenedor">
+                        <img src="https://images.unsplash.com/photo-1627856013091-fed6e4e30025?w=600&auto=format&fit=crop&q=80" alt="Minecraft" loading="lazy">
+                    </div>
+                    <div class="informacion">
+                        <span>SANDBOX / SUPERVIVENCIA</span>
+                        <h3>Minecraft</h3>
+                        <p>Construye, explora y sobrevive en un mundo infinito de bloques creado proceduralmente.</p>
+                        <a href="https://www.minecraft.net" target="_blank" rel="noopener noreferrer">Página oficial</a>
+                        <button type="button" class="boton-favorito" data-favorito="minecraft" aria-pressed="false">☆ Añadir a favoritos</button>
+                    </div>
+                </article>
+
+                <article class="juego" data-juego="fortnite" data-genero="Battle royale" data-edad="12+">
+                    <div class="imagen-juego-contenedor">
+                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&auto=format&fit=crop&q=80" alt="Fortnite" loading="lazy">
+                    </div>
+                    <div class="informacion">
+                        <span>BATTLE ROYALE / DISPAROS</span>
+                        <h3>Fortnite</h3>
+                        <p>Compite con hasta 100 jugadores, construye defensas y sé el último superviviente en pie.</p>
+                        <a href="https://www.fortnite.com" target="_blank" rel="noopener noreferrer">Página oficial</a>
+                        <button type="button" class="boton-favorito" data-favorito="fortnite" aria-pressed="false">☆ Añadir a favoritos</button>
+                    </div>
+                </article>
+
+                <article class="juego" data-juego="gta-v" data-genero="Acción" data-edad="18+">
+                    <div class="imagen-juego-contenedor">
+                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&auto=format&fit=crop&q=80" alt="Grand Theft Auto V" loading="lazy">
+                    </div>
+                    <div class="informacion">
+                        <span>ACCIÓN / MUNDO ABIERTO</span>
+                        <h3>Grand Theft Auto V</h3>
+                        <p>Vive las historias entrelazadas de tres criminales en la metrópolis de Los Santos.</p>
+                        <a href="https://www.rockstargames.com/gta-v" target="_blank" rel="noopener noreferrer">Página oficial</a>
+                        <button type="button" class="boton-favorito" data-favorito="gta-v" aria-pressed="false">☆ Añadir a favoritos</button>
+                    </div>
+                </article>
+            </div>
+            <p id="mensajeBusqueda" class="mensaje-secundario" aria-live="polite"></p>
+            <p class="nota-clasificacion">Las edades de PixelForge son recomendaciones generales, no sustituyen las clasificaciones oficiales ESRB/PEGI ni la supervisión familiar.</p>
+            </div><!-- cierre de seccionCatalogoGeneral -->
+        </section>
+
+        <section class="seccion pf-profile-section" id="perfil">
+            <div class="pf-profile-heading">
+                <div><p class="etiqueta">IDENTIDAD PLAYER</p><h2>Mi perfil</h2><p class="descripcion">Personaliza cómo te ve la comunidad de PixelForge.</p></div>
+                <div class="pf-profile-avatar" id="pfProfileAvatarPreview" aria-label="Vista previa de foto de perfil">PF</div>
+            </div>
+            <div class="panel-pixel pf-profile-panel">
+                <form id="pfProfileForm" class="pf-profile-form">
+                    <div class="pf-profile-grid">
+                        <div><label for="pfProfileName">Nombre visible</label><input id="pfProfileName" name="display_name" maxlength="40" placeholder="Tu nombre gamer" required></div>
+                        <div><label for="pfProfileUsername">Nombre de usuario</label><input id="pfProfileUsername" name="username" maxlength="24" placeholder="player_01"></div>
+                        <div><label>Estatus de cuenta</label><p id="pfProfileStatus" class="pf-profile-account-status" aria-live="polite">Usuario</p></div>
+                        <div class="pf-profile-full"><label for="pfProfileAvatar">URL de foto de perfil</label><input id="pfProfileAvatar" name="avatar_url" type="url" placeholder="https://..."><small>Usa un enlace directo a una imagen pública.</small></div>
+                        <div class="pf-profile-full"><label for="pfProfileBio">Descripción</label><textarea id="pfProfileBio" name="bio" rows="4" maxlength="180" placeholder="Cuéntale a la comunidad qué juegos te gustan..."></textarea><small>Máximo 180 caracteres.</small></div>
+                    </div>
+                    <div class="pf-profile-actions"><button type="submit" class="boton">Guardar cambios</button><a href="#biblioteca" class="boton boton-secundario">Volver a mi biblioteca</a></div>
+                    <p id="pfProfileMessage" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+
+        <section class="seccion biblioteca-seccion" id="biblioteca">
+            <h2>Mi biblioteca</h2>
+            <p class="descripcion">Organiza tus videojuegos, registra tu progreso, califica y guarda tus observaciones.</p>
+
+            <div id="zonaAcceso" class="panel-pixel">
+                <h3>Inicia sesión o crea tu cuenta</h3>
+                <div class="aviso-correo-ayuda">
+                    <strong>⚡ Sin esperas de confirmación:</strong> Al crear tu cuenta aquí, PixelForge activa tu sesión de inmediato sin obligarte a confirmar correo electrónico. Puedes gestionar y guardar videojuegos al instante.
+                </div>
+                <form id="formAcceso">
+                    <label for="correo">Correo electrónico</label>
+                    <input type="email" id="correo" required autocomplete="email" placeholder="user@correo.com">
+                    <label for="clave">Contraseña</label>
+
+                    <div class="campo-password">
+                        <input
+                            type="password"
+                            id="clave"
+                            minlength="8"
+                            required
+                            placeholder="Mínimo 8 caracteres"
+                            autocomplete="current-password"
+                        >
+
+                        <button
+                            type="button"
+                            id="alternarClave"
+                            class="boton-secundario"
+                            aria-pressed="false"
+                            aria-controls="clave"
+                        >
+                            Mostrar
+                        </button>
+                    </div>
+                    <div class="acciones-formulario">
+                        <button type="submit" class="boton">Iniciar sesión</button>
+                        <button type="button" id="crearCuenta" class="boton boton-secundario">Crear cuenta</button>
+                        <button type="button" id="modoInvitado" class="boton boton-secundario">Probar en modo local (sin cuenta)</button>
+                    </div>
+                </form>
+                <p id="mensajeAcceso" aria-live="polite"></p>
+            </div>
+
+            <div id="zonaBiblioteca" class="panel-pixel" hidden>
+                <p>Sesión iniciada: <strong id="correoUsuario"></strong></p>
+                <button type="button" id="cerrarSesion" class="boton boton-secundario">Cerrar sesión</button>
+                <hr>
+
+                <h3 id="tituloFormularioJuego">Agregar videojuego</h3>
+                <form id="formJuego">
+                    <label for="nombreJuego">Nombre del videojuego</label>
+                    <input type="text" id="nombreJuego" maxlength="100" required>
+
+                    <label for="plataforma">Plataforma</label>
+                    <select id="plataforma">
+                        <option>PC</option>
+                        <option>PlayStation</option>
+                        <option>Xbox</option>
+                        <option>Nintendo Switch</option>
+                        <option>Móvil</option>
+                        <option>Otra</option>
+                    </select>
+
+                    <label for="generoJuego">Género</label>
+                    <select id="generoJuego">
+                        <option>Otro</option>
+                        <option>Acción</option>
+                        <option>Aventura</option>
+                        <option>Carreras</option>
+                        <option>Estrategia</option>
+                        <option>Rol</option>
+                        <option>Simulación</option>
+                        <option>Supervivencia</option>
+                        <option>Deportes</option>
+                    </select>
+
+                    <label for="estadoJuego">Estado</label>
+                    <select id="estadoJuego">
+                        <option>Pendiente</option>
+                        <option>Jugando</option>
+                        <option>Completado</option>
+                        <option>En pausa</option>
+                    </select>
+
+                    <label for="valoracionJuego">Calificación (0 a 5)</label>
+                    <select id="valoracionJuego">
+                        <option value="0">Sin calificar</option>
+                        <option value="1">1 de 5</option>
+                        <option value="2">2 de 5</option>
+                        <option value="3">3 de 5</option>
+                        <option value="4">4 de 5</option>
+                        <option value="5">5 de 5</option>
+                    </select>
+
+                    <label for="notasJuego">Observaciones</label>
+                    <textarea id="notasJuego" rows="3" maxlength="1000" placeholder="Tu progreso o comentarios"></textarea>
+
+                    <div class="acciones-formulario">
+                        <button type="submit" id="guardarJuego" class="boton">Guardar videojuego</button>
+                        <button type="button" id="cancelarEdicion" class="boton boton-secundario" hidden>Cancelar edición</button>
+                    </div>
+                </form>
+
+                <p id="mensajeJuego" aria-live="polite"></p>
+                <h3>Mis videojuegos guardados</h3>
+                <div id="listaJuegos" class="lista-juegos"></div>
+            </div>
+        </section>
+<section class="seccion zona-infantil" id="kids">
+            <p class="etiqueta">PIXELFORGE KIDS</p>
+            <h2>Zona infantil</h2>
+            <p class="descripcion">Una selección familiar y sencilla. Revisa siempre la clasificación oficial antes de jugar.</p>
+            <div class="kids-intro">
+                <strong>Consejo para familias:</strong> usa límites de tiempo y supervisión adecuada a la edad. Los juegos en línea pueden incluir comunicación o contenido creado por otras personas.
+            </div>
+            <div id="catalogoInfantil" class="catalogo-dinamico"></div>
+        </section>
+
+        <section class="seccion" id="proponer">
+            <h2>Propón un videojuego</h2>
+            <p class="descripcion">Cualquier visitante puede proponer un videojuego. Las propuestas se revisan antes de aparecer en el catálogo.</p>
+            <div class="pf-creator-callout"><p><strong>¿El videojuego es tuyo o también haces streams?</strong> Si quieres que te evaluemos como posible colaborador emergente, completa el Centro de Creadores; ahí podrás indicar tu experiencia previa, tus enlaces y solicitar permiso para aparecer en streams.</p><a class="boton boton-secundario" href="#creadores">Ir al Centro de Creadores</a></div>
+            <div class="panel-pixel">
+                <form id="formPropuestaJuego">
+                    <label for="propuestaNombre">Nombre del videojuego</label>
+                    <input id="propuestaNombre" name="nombre" maxlength="100" required placeholder="Ej. Mi videojuego favorito">
+                    <label for="propuestaGenero">Categoría o género</label>
+                    <select id="propuestaGenero" name="genero" required>
+                        <option value="Acción">Acción</option><option value="Aventura">Aventura</option><option value="Carreras">Carreras</option>
+                        <option value="Estrategia">Estrategia</option><option value="RPG">RPG</option><option value="Simulación">Simulación</option>
+                        <option value="Supervivencia">Supervivencia</option><option value="Terror">Terror</option><option value="Deportes">Deportes</option>
+                        <option value="Cooperativo">Cooperativo</option><option value="Familiar">Familiar</option><option value="Otro">Otro</option>
+                    </select>
+                    <label for="propuestaEdad">Edad sugerida (orientativa)</label>
+                    <select id="propuestaEdad" name="edad" required>
+                        <option>3+</option><option>7+</option><option>10+</option><option>12+</option><option>16+</option><option>18+</option><option>Pendiente de verificar</option>
+                    </select>
+                    <label for="propuestaUrl">Página oficial o tienda del juego</label>
+                    <input id="propuestaUrl" name="sitio_oficial" type="url" required placeholder="https://...">
+                    <label for="propuestaImagen">Enlace de la imagen (opcional)</label>
+                    <input id="propuestaImagen" name="imagen_url" type="url" placeholder="https://...">
+                    <label for="propuestaStreamers">Streamers o creadores relacionados (opcional)</label>
+                    <input id="propuestaStreamers" name="streamers" maxlength="250" placeholder="Nombres separados por comas">
+                    <label for="propuestaDescripcion">Descripción breve</label>
+                    <textarea id="propuestaDescripcion" name="descripcion" rows="3" maxlength="500" placeholder="¿Qué hace interesante a este juego?"></textarea>
+                    <button type="submit" id="enviarPropuesta" class="boton">Enviar propuesta</button>
+                </form>
+                <p id="mensajePropuesta" aria-live="polite"></p>
+            </div>
+            <p id="pfEstadoAdmin" aria-live="polite">Inicia sesión con la cuenta habilitada como administradora para revisar el estado del permiso.</p>
+            <div id="zonaModeracionCatalogo" class="panel-pixel" hidden>
+                <h3>Revisar propuestas pendientes (administración)</h3>
+                <p>Esta sección solo aparece para la cuenta que se habilite como administradora desde Supabase.</p>
+                <div id="listaPropuestasPendientes" class="lista-publicaciones"></div>
+                <hr class="pf-admin-separador">
+                <h3>Administrar catálogo de videojuegos</h3>
+                <p>Desde aquí puedes agregar, editar, publicar u ocultar juegos directamente en Supabase. Solo aparece para la cuenta administradora.</p>
+                <form id="pfEditorCatalogoForm" class="pf-editor-catalogo">
+                    <label for="pfEditorSlug">Identificador (slug)</label>
+                    <input id="pfEditorSlug" maxlength="90" placeholder="ej. mi-videojuego" autocomplete="off">
+                    <label for="pfEditorNombre">Nombre del videojuego</label>
+                    <input id="pfEditorNombre" maxlength="100" required placeholder="Nombre del juego">
+                    <label for="pfEditorGenero">Categoría</label>
+                    <select id="pfEditorGenero" required>
+                        <option>Acción</option><option>Disparos</option><option>MOBA</option><option>Battle royale</option><option>Aventura</option><option>RPG</option><option>Estrategia</option><option>Supervivencia</option><option>Carreras</option><option>Deportes</option><option>Simulación</option><option>Terror</option><option>Sandbox</option><option>Cooperativo</option><option>Familiar</option><option>Indie</option><option>Otro</option>
+                    </select>
+                    <label for="pfEditorEdad">Clasificación orientativa</label>
+                    <select id="pfEditorEdad" required><option>3+</option><option>7+</option><option>10+</option><option>12+</option><option>16+</option><option>18+</option><option>Pendiente de verificar</option></select>
+                    <label for="pfEditorUrl">Sitio oficial (HTTPS)</label>
+                    <input id="pfEditorUrl" type="url" required placeholder="https://...">
+                    <label for="pfEditorImagen">Imagen (HTTPS, opcional)</label>
+                    <input id="pfEditorImagen" type="url" placeholder="https://...">
+                    <label for="pfEditorStreamers">Streamers (opcional)</label>
+                    <input id="pfEditorStreamers" maxlength="250" placeholder="Nombres separados por comas">
+                    <label for="pfEditorDescripcion">Descripción (opcional)</label>
+                    <textarea id="pfEditorDescripcion" rows="3" maxlength="1000" placeholder="Descripción del videojuego"></textarea>
+                    <label for="pfEditorReqMin">Requisitos mínimos de PC (opcional)</label>
+                    <textarea id="pfEditorReqMin" rows="3" maxlength="1200" placeholder="SO, procesador, RAM, gráfica y almacenamiento"></textarea>
+                    <label for="pfEditorReqRec">Requisitos recomendados de PC (opcional)</label>
+                    <textarea id="pfEditorReqRec" rows="3" maxlength="1200" placeholder="Requisitos recomendados verificados"></textarea>
+                    <label class="pf-check"><input id="pfEditorInfantil" type="checkbox"> Incluir en zona infantil (solo tras revisar clasificación)</label>
+                    <label class="pf-check"><input id="pfEditorAprobado" type="checkbox" checked> Publicar en el catálogo</label>
+                    <div class="acciones-formulario"><button id="pfEditorGuardar" type="submit" class="boton">Guardar juego</button><button id="pfEditorNuevo" type="button" class="boton boton-secundario">Nuevo</button><button id="pfEditorCancelar" type="button" class="boton boton-secundario">Cancelar edición</button></div>
+                </form>
+                <p id="pfEditorMensaje" aria-live="polite"></p>
+                <h4>Juegos guardados en la base de datos</h4>
+                <div id="pfEditorListaCatalogo" class="lista-publicaciones"></div>
+            </div>
+        </section>
+
+        <section class="seccion musica-seccion" id="musica">
+            <h2>Música de videojuegos</h2>
+            <p class="descripcion">Escucha bandas sonoras legendarias conectadas a la API oficial de música en tiempo real y disfruta de temas retro chiptune.</p>
+
+            <article class="panel-radio-videojuegos" id="radioVideojuegos">
+                <div class="encabezado-radio-videojuegos">
+                    <div>
+                        <p class="etiqueta-radio">PIXELFORGE MUSIC & OST API</p>
+                        <h3>Jukebox Gamer & API de Música</h3>
+                        <p>Busca cualquier videojuego o compositor y reprodúcelo al instante.</p>
+                    </div>
+                    <div id="ondaEcualizador" class="onda-sonido" aria-hidden="true">
+                        <span class="onda-barra"></span>
+                        <span class="onda-barra"></span>
+                        <span class="onda-barra"></span>
+                        <span class="onda-barra"></span>
+                    </div>
+                </div>
+
+                <!-- Buscador de la API de música -->
+                <div class="barra-busqueda-musica">
+                    <input type="search" id="inputBusquedaMusicaApi" placeholder="Buscar canciones en la API (ej: K/DA, LE SSERAFIM, Zelda, Minecraft, Cyberpunk...)" autocomplete="off">
+                    <button type="button" id="btnBuscarMusicaApi" class="boton">Buscar en la API</button>
+                    <button type="button" id="btnApiKpopGaming" class="boton" style="background: linear-gradient(135deg, #ff2d75, #7928ca); border-color:#ff2d75; color:#fff;">🇰🇷 API K-Pop Gamer</button>
+                    <button type="button" id="btnColeccionLocalMusica" class="boton boton-secundario">Pistas clásicas</button>
+                </div>
+
+                <!-- Chips de géneros y sagas populares -->
+                <div class="chips-musica-api" id="chipsMusica">
+                    <button type="button" class="chip-musica-btn" data-query="K/DA League of Legends">✨ K/DA (League of Legends)</button>
+                    <button type="button" class="chip-musica-btn" data-query="LE SSERAFIM Perfect Night Overwatch">🌸 LE SSERAFIM (Overwatch 2)</button>
+                    <button type="button" class="chip-musica-btn" data-query="League of Legends NewJeans">🐰 NewJeans (Worlds LoL)</button>
+                    <button type="button" class="chip-musica-btn" data-query="BLACKPINK Ready For Love PUBG">🖤 BLACKPINK (PUBG)</button>
+                    <button type="button" class="chip-musica-btn" data-query="efootball soundtrack">⚽ eFootball (Konami)</button>
+                    <button type="button" class="chip-musica-btn" data-query="zelda soundtrack">⚔️ The Legend of Zelda</button>
+                    <button type="button" class="chip-musica-btn" data-query="super mario soundtrack">🍄 Super Mario</button>
+                    <button type="button" class="chip-musica-btn" data-query="minecraft c418">⛏️ Minecraft</button>
+                    <button type="button" class="chip-musica-btn" data-query="cyberpunk 2077 soundtrack">🦾 Cyberpunk</button>
+                    <button type="button" class="chip-musica-btn" data-query="halo soundtrack">🌌 Halo</button>
+                    <button type="button" class="chip-musica-btn" data-query="doom mick gordon">🔥 Doom</button>
+                    <button type="button" class="chip-musica-btn" data-query="chiptune 8-bit game">🕹️ 8-Bit Retro</button>
+                </div>
+
+                <div class="reproductor-gamer-contenedor">
+                    <div class="caratula-disco" id="caratulaAudioContenedor">
+                        <img id="caratulaAudioImg" src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80" alt="Carátula de música">
+                    </div>
+
+                    <div class="reproductor-info-columna">
+                        <div class="datos-radio-videojuegos" style="margin-top:0;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
+                                <p id="estadoGamer" class="estado-radio" style="margin:0;">Listo para reproducir</p>
+                                <span id="badgeOrigenMusica" class="badge-fuente-musica">COLECCIÓN LOCAL</span>
+                            </div>
+                            <h4 id="tituloTemaGamer" style="font-size:1.35rem; color:#00e5ff; margin-top:6px;">Battle Boss (Tema de Jefe Final)</h4>
+                            <p id="artistaTemaGamer">Artista: BoxCat Games</p>
+                            <p id="albumTemaGamer">Banda Sonora: Nameless RPG / Boss Battle</p>
+                        </div>
+
+                        <!-- Barra de progreso -->
+                        <div class="barra-progreso-contenedor">
+                            <span id="tiempoActualAudio" class="tiempo-audio">0:00</span>
+                            <input type="range" id="barraProgresoAudio" value="0" min="0" max="100" aria-label="Progreso de la canción">
+                            <span id="tiempoTotalAudio" class="tiempo-audio">0:53</span>
+                        </div>
+
+                        <!-- Controles -->
+                        <div class="controles-reproductor">
+                            <button type="button" id="btnAudioPrev" class="btn-ctrl" title="Canción anterior" aria-label="Canción anterior">⏮</button>
+                            <button type="button" id="btnAudioPlay" class="btn-ctrl btn-ctrl-play" title="Reproducir / Pausa" aria-label="Reproducir música">▶</button>
+                            <button type="button" id="btnAudioNext" class="btn-ctrl" title="Siguiente canción" aria-label="Siguiente canción">⏭</button>
+                            
+                            <div style="display:flex; align-items:center; gap:8px; margin-left:auto;">
+                                <span style="font-size:1.1rem;" aria-hidden="true">🔊</span>
+                                <input type="range" id="volumenAudio" min="0" max="100" value="80" style="width:90px; accent-color:#00e5ff;" aria-label="Control de volumen">
+                            </div>
+                        </div>
+
+                        <audio id="audioGamer" preload="none"></audio>
+
+                        <!-- Selector de canciones -->
+                        <div style="margin-top:16px;">
+                            <strong style="font-size:0.92rem; color:#d2dff5;" id="tituloListaPistas">Pistas disponibles:</strong>
+                            <div class="selector-pistas-audio" id="listaPistasAudio"></div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="seccion comunidad-seccion" id="comunidad">
+            <h2>Comunidad PixelForge</h2>
+            <p class="descripcion">Comparte tus recomendaciones, opiniones y experiencias gamer.</p>
+            <div class="panel-pixel">
+                <h3>Crear una publicación</h3>
+                <form id="formPublicacion">
+                    <label for="tituloPublicacion">Título</label>
+                    <input type="text" id="tituloPublicacion" maxlength="80" required placeholder="Ej. Mi videojuego favorito">
+                    <label for="textoPublicacion">Tu publicación</label>
+                    <textarea id="textoPublicacion" rows="4" maxlength="500" required placeholder="Comparte lo que piensas..."></textarea>
+                    <button type="submit" class="boton">Publicar</button>
+                </form>
+                <p id="mensajeComunidad" aria-live="polite"></p>
+                <hr>
+                <h3>Publicaciones de la comunidad</h3>
+                <div id="listaPublicaciones" class="lista-publicaciones"></div>
+            </div>
+        </section>
+
+        <section class="seccion pf-v9-section" id="streamers">
+            <p class="etiqueta">COMUNIDAD EN DIRECTO</p>
+            <h2>Streams y streamers</h2>
+            <p class="descripcion">Carga un canal de Twitch en la página o abre directorios de transmisiones. La reproducción depende de que el canal esté disponible y de la configuración de Twitch.</p>
+            <div class="panel-pixel pf-v9-panel">
+                <form id="pfV9StreamForm" class="pf-v9-form">
+                    <label for="pfV9Channel">Nombre del canal de Twitch</label>
+                    <input id="pfV9Channel" name="channel" maxlength="60" placeholder="Ej. twitchgaming" required pattern="[A-Za-z0-9_]{1,60}">
+                    <div class="pf-v9-actions">
+                        <button class="boton" type="submit">Cargar stream aquí</button>
+                        <button class="boton boton-secundario" type="button" id="pfV9Search">Buscar canales</button>
+                    </div>
+                    <p id="pfV9StreamStatus" class="pf-v9-status" role="status" aria-live="polite">Para que Twitch funcione, abre la página desde Live Server o un dominio web.</p>
+                </form>
+                <div id="pfV9Player" class="pf-v9-player" aria-label="Reproductor de Twitch"></div>
+            </div>
+            <div class="pf-v9-stream-links">
+                <a class="pf-v9-link-card" href="https://www.twitch.tv/directory/category/minecraft" target="_blank" rel="noopener noreferrer"><strong>Minecraft</strong><span>Buscar directos ↗</span></a>
+                <a class="pf-v9-link-card" href="https://www.twitch.tv/directory/category/fortnite" target="_blank" rel="noopener noreferrer"><strong>Fortnite</strong><span>Buscar directos ↗</span></a>
+                <a class="pf-v9-link-card" href="https://www.twitch.tv/directory/category/valorant" target="_blank" rel="noopener noreferrer"><strong>VALORANT</strong><span>Buscar directos ↗</span></a>
+                <a class="pf-v9-link-card" href="https://www.youtube.com/gaming" target="_blank" rel="noopener noreferrer"><strong>YouTube Gaming</strong><span>Explorar contenido ↗</span></a>
+            </div>
+        </section>
+
+        <section class="seccion pf-v9-section" id="creadores">
+            <p class="etiqueta">PIXELFORGE CREATOR HUB</p>
+            <h2>Creadores emergentes y colaboradores</h2>
+            <p class="descripcion">¿Desarrollaste un videojuego, haces streams o estás empezando? Envíanos tu perfil para valorar una colaboración. Las solicitudes quedan pendientes de revisión; enviar este formulario no garantiza publicación ni colaboración.</p>
+
+            <div class="pf-creator-grid">
+                <article class="panel-pixel pf-v9-panel pf-creator-guides">
+                    <h3>Conceptos y reglas para empezar</h3>
+                    <p><strong>Si es tu primera vez, puedes comenzar así:</strong></p>
+                    <ol>
+                        <li>Elige un enfoque: desarrollo de videojuegos, retransmisiones o ambos.</li>
+                        <li>Prepara una descripción breve, una idea propia y enlaces de referencia seguros.</li>
+                        <li>Respeta los derechos de autor: usa juegos, música, imágenes y recursos que tengas permitido mostrar.</li>
+                        <li>En streams, mantén un trato respetuoso, indica contenido sensible y evita acoso, discriminación, trampas, fraude o material ilegal.</li>
+                        <li>No publiques datos privados tuyos ni de otras personas. Si eres menor, solicita la autorización de tu madre, padre o tutor antes de enviar datos o participar.</li>
+                        <li>PixelForge revisará calidad, seguridad y adecuación antes de presentar una propuesta o retransmisión.</li>
+                    </ol>
+                    <div class="pf-fee-box">
+                        <span>Cuota de recuperación propuesta</span>
+                        <strong id="pfCreatorFeeLabel">$50 MXN</strong>
+                        <p>Es una cuota sugerida y configurable. No se cobra en este formulario. Solo se solicitaría después de revisar y aceptar la solicitud, con el concepto y método de pago informados previamente.</p>
+                    </div>
+                    <p class="pf-v9-status">La primera etapa de evaluación es manual. No compartas contraseñas, tokens de transmisión ni claves privadas.</p>
+                </article>
+
+                <article class="panel-pixel pf-v9-panel">
+                    <h3>Solicitud de creador o colaborador</h3>
+                    <form id="pfCreatorForm" class="pf-v9-form">
+                        <label for="pfCreatorName">Nombre o nombre público</label>
+                        <input id="pfCreatorName" maxlength="100" required placeholder="Nombre o alias público">
+                        <label for="pfCreatorAlias">Alias de creador</label>
+                        <input id="pfCreatorAlias" maxlength="60" required placeholder="Tu nombre en la comunidad">
+                        <label for="pfCreatorEmail">Correo de contacto</label>
+                        <input id="pfCreatorEmail" type="email" maxlength="160" required placeholder="tucorreo@ejemplo.com">
+                        <label for="pfCreatorRole">¿Qué quieres hacer en PixelForge?</label>
+                        <select id="pfCreatorRole" required>
+                            <option value="desarrollador">Proponer o mostrar un videojuego propio</option>
+                            <option value="streamer">Solicitar aparecer con mis streams</option>
+                            <option value="ambos">Ambas cosas: juego y streams</option>
+                        </select>
+                        <label for="pfCreatorIdeaName">Nombre del videojuego o idea que deseas proponer (opcional)</label>
+                        <input id="pfCreatorIdeaName" maxlength="120" placeholder="Nombre del juego o concepto inicial">
+                        <label for="pfCreatorIdeaConcept">¿De qué trata tu videojuego o propuesta?</label>
+                        <textarea id="pfCreatorIdeaConcept" rows="3" maxlength="1500" placeholder="Idea, mecánicas, público al que va dirigido o qué lo hace diferente."></textarea>
+                        <label for="pfCreatorHasGame">¿Ya creaste algún videojuego?</label>
+                        <select id="pfCreatorHasGame" required><option value="no">No, sería mi primera vez</option><option value="si">Sí, ya desarrollé uno</option><option value="en_proceso">Estoy desarrollándolo</option></select>
+                        <div id="pfCreatorGameDetails" class="pf-conditional" hidden>
+                            <label for="pfCreatorGameName">Nombre del videojuego</label>
+                            <input id="pfCreatorGameName" maxlength="120" placeholder="Nombre del proyecto">
+                            <label for="pfCreatorGameLink">Enlace a demo, tienda, portafolio o página del juego</label>
+                            <input id="pfCreatorGameLink" type="url" maxlength="500" placeholder="https://...">
+                            <label for="pfCreatorGameDetailsText">Tu participación y estado del proyecto</label>
+                            <textarea id="pfCreatorGameDetailsText" rows="3" maxlength="1500" placeholder="Rol, motor utilizado, demo disponible, estado... "></textarea>
+                        </div>
+                        <label for="pfCreatorHasStreamed">¿Ya hiciste streams antes?</label>
+                        <select id="pfCreatorHasStreamed" required><option value="no">No, sería mi primera vez</option><option value="si">Sí, ya he transmitido</option></select>
+                        <div id="pfCreatorBeginnerNotice" class="pf-first-timer-notice"><strong>Ruta para principiantes:</strong> revisa los conceptos y reglas de la columna de la izquierda. Puedes comenzar con una idea pequeña, una demo corta o un stream de prueba; no necesitas tener una audiencia grande para solicitar evaluación.</div>
+                        <div id="pfCreatorStreamDetails" class="pf-conditional" hidden>
+                            <label for="pfCreatorPlatform">Plataforma donde haces streams</label>
+                            <select id="pfCreatorPlatform"><option value="Twitch">Twitch</option><option value="YouTube">YouTube</option><option value="TikTok Live">TikTok Live</option><option value="Otra">Otra</option></select>
+                            <label for="pfCreatorStreamLink">Enlace a tu canal/perfil</label>
+                            <input id="pfCreatorStreamLink" type="url" maxlength="500" placeholder="https://twitch.tv/tuusuario">
+                            <label for="pfCreatorStreamExperience">Experiencia previa, tipo de contenido o comunidad</label>
+                            <textarea id="pfCreatorStreamExperience" rows="3" maxlength="1500" placeholder="Cuéntanos qué transmites y cómo es tu contenido."></textarea>
+                        </div>
+                        <label for="pfCreatorBio">Cuéntanos tu idea o qué te gustaría aportar</label>
+                        <textarea id="pfCreatorBio" rows="4" maxlength="2000" required placeholder="Tu idea, experiencia, objetivos y tipo de colaboración que buscas."></textarea>
+                        <label class="pf-v9-consent"><input id="pfCreatorFeeConsent" type="checkbox" required> Entiendo que la cuota de recuperación es propuesta, no se cobra ahora y se informará antes de cualquier pago.</label>
+                        <label class="pf-v9-consent"><input id="pfCreatorDataConsent" type="checkbox" required> Acepto que estos datos se usen para revisar esta solicitud de colaboración.</label>
+                        <button class="boton" type="submit">Enviar solicitud de creador</button>
+                        <button class="boton boton-secundario" type="button" id="pfCreatorExport">Descargar solicitudes guardadas</button>
+                        <p id="pfCreatorStatus" class="pf-v9-status" role="status" aria-live="polite"></p>
+                        <a id="pfCreatorMailLink" class="boton boton-secundario" href="#creadores" hidden>Enviar solicitud por correo</a>
+                    </form>
+                </article>
+            </div>
+
+            <div class="panel-pixel pf-v9-panel pf-stream-request-panel">
+                <h3>Solicitar permiso para aparecer en los streams</h3>
+                <p>El canal debe pertenecer a la persona solicitante o contar con autorización expresa. PixelForge puede incrustar un canal de Twitch; para YouTube u otras plataformas se revisará si corresponde enlazar o incrustar el contenido. La persona creadora inicia y controla la transmisión desde su plataforma: esta página no captura la cámara ni recibe video directamente.</p>
+                <form id="pfStreamRequestForm" class="pf-v9-form">
+                    <label for="pfStreamRequestName">Nombre o alias</label>
+                    <input id="pfStreamRequestName" maxlength="100" required placeholder="Nombre de creador">
+                    <label for="pfStreamRequestEmail">Correo de contacto</label>
+                    <input id="pfStreamRequestEmail" type="email" maxlength="160" required placeholder="tucorreo@ejemplo.com">
+                    <label for="pfStreamRequestPlatform">Plataforma</label>
+                    <select id="pfStreamRequestPlatform" required><option value="Twitch">Twitch</option><option value="YouTube">YouTube</option></select>
+                    <label for="pfStreamRequestUrl">URL de tu canal o directo</label>
+                    <input id="pfStreamRequestUrl" type="url" maxlength="500" required placeholder="https://www.twitch.tv/tuusuario">
+                    <label for="pfStreamRequestContent">¿Qué tipo de contenido transmites?</label>
+                    <textarea id="pfStreamRequestContent" rows="3" maxlength="1200" required placeholder="Juegos, frecuencia de transmisión, público... "></textarea>
+                    <label class="pf-v9-consent"><input id="pfStreamRequestPermission" type="checkbox" required> Confirmo que soy titular del canal o tengo autorización y permito que PixelForge incruste o enlace mi contenido para revisión y promoción.</label>
+                    <label class="pf-v9-consent"><input id="pfStreamRequestRules" type="checkbox" required> Acepto las reglas de convivencia, derechos de autor y moderación de PixelForge.</label>
+                    <div class="pf-v9-actions"><button class="boton" type="submit">Solicitar permiso</button><button class="boton boton-secundario" type="button" id="pfStreamRequestExport">Descargar solicitudes de stream</button></div>
+                    <p id="pfStreamRequestStatus" class="pf-v9-status" role="status" aria-live="polite"></p>
+                    <a id="pfStreamRequestMailLink" class="boton boton-secundario" href="#creadores" hidden>Enviar solicitud por correo</a>
+                </form>
+            </div>
+
+            <div class="panel-pixel pf-v9-panel">
+                <h3>Vista previa de un canal autorizado</h3>
+                <p class="descripcion">Para prueba manual, puedes cargar un canal público de Twitch. Para mostrar oficialmente un creador en portada, confirma primero su permiso.</p>
+                <div id="pfApprovedStreams" class="pf-v9-local-list"><p class="pf-v9-empty">Todavía no hay canales destacados configurados.</p></div>
+            </div>
+        </section>
+
+        <section class="seccion pf-v9-section" id="reportes">
+            <p class="etiqueta">CALIDAD Y SOPORTE</p>
+            <h2>Centro de reportes</h2>
+            <p class="descripcion">Registra errores, problemas visuales o propuestas. Cuando la migración V9 está instalada y Supabase está disponible, se envían al panel de administración; también se guarda una copia local de respaldo.</p>
+            <div class="panel-pixel pf-v9-panel">
+                <form id="pfV9ReportForm" class="pf-v9-form">
+                    <label for="pfV9ReportType">Tipo de reporte</label>
+                    <select id="pfV9ReportType" required>
+                        <option value="Error funcional">Error funcional</option>
+                        <option value="Diseño o accesibilidad">Diseño o accesibilidad</option>
+                        <option value="Catálogo o API">Catálogo o API</option>
+                        <option value="Streams">Streams</option>
+                        <option value="Música">Música</option>
+                        <option value="Sugerencia">Sugerencia</option>
+                    </select>
+                    <label for="pfV9ReportTitle">Resumen</label>
+                    <input id="pfV9ReportTitle" maxlength="120" required placeholder="Ej. No carga la imagen de un juego">
+                    <label for="pfV9ReportDetail">Descripción y pasos para reproducirlo</label>
+                    <textarea id="pfV9ReportDetail" rows="4" maxlength="2500" required placeholder="Describe qué pasó, qué esperabas y cómo repetir el problema."></textarea>
+                    <div class="pf-v9-actions">
+                        <button class="boton" type="submit">Guardar reporte</button>
+                        <button class="boton boton-secundario" type="button" id="pfV9ExportReports">Descargar reportes JSON</button>
+                    </div>
+                    <p id="pfV9ReportStatus" class="pf-v9-status" role="status" aria-live="polite"></p>
+                </form>
+                <h3>Reportes guardados en este navegador</h3>
+                <div id="pfV9ReportList" class="pf-v9-local-list"><p>Aún no hay reportes guardados.</p></div>
+            </div>
+        </section>
+        <section class="seccion pf-v9-section pf-admin-section" id="administracion" hidden>
+            <p class="etiqueta">PIXELFORGE · CONTROL INTERNO</p>
+            <h2>Dashboard del administrador</h2>
+            <p class="descripcion">Revisa propuestas de creadores, permisos de streams, reportes y seguimiento manual de cuotas. Las acciones se validan en Supabase mediante las políticas de administrador.</p>
+            <p id="pfAdminGate" class="pf-v9-status" role="status" aria-live="polite">Verificando acceso administrativo…</p>
+            <div id="pfAdminWorkspace" hidden>
+                <div class="pf-v9-stats pf-admin-stats">
+                    <article class="pf-v9-stat"><span>Solicitudes de creadores</span><strong id="pfAdminCreatorCount">—</strong></article>
+                    <article class="pf-v9-stat"><span>Solicitudes de stream</span><strong id="pfAdminStreamCount">—</strong></article>
+                    <article class="pf-v9-stat"><span>Reportes</span><strong id="pfAdminReportCount">—</strong></article>
+                    <article class="pf-v9-stat"><span>Cuotas por revisar</span><strong id="pfAdminFeeCount">—</strong></article>
+                </div>
+                <div class="pf-v9-quick">
+                    <button type="button" class="boton" id="pfAdminRefresh">Actualizar solicitudes</button>
+                    <a href="#proponer" class="boton boton-secundario">Moderar propuestas de juegos y catálogo</a>
+                </div>
+                <section class="pf-admin-block">
+                    <h3>Creadores y posibles colaboradores</h3>
+                    <p class="descripcion">Aprueba o rechaza solicitudes, cambia su estado y registra manualmente el estado de la cuota. No se procesa ningún pago desde este panel.</p>
+                    <div id="pfAdminCreatorList" class="pf-admin-list"><p class="pf-v9-empty">Cargando solicitudes…</p></div>
+                </section>
+                <section class="pf-admin-block">
+                    <h3>Permisos de stream</h3>
+                    <p class="descripcion">Destacar un canal confirma que ya revisaste la autorización. Solo se mostrarán públicamente los canales marcados como activos.</p>
+                    <div id="pfAdminStreamList" class="pf-admin-list"><p class="pf-v9-empty">Cargando solicitudes…</p></div>
+                </section>
+                <section class="pf-admin-block">
+                    <h3>Centro de reportes</h3>
+                    <div id="pfAdminReportList" class="pf-admin-list"><p class="pf-v9-empty">Cargando reportes…</p></div>
+                </section>
+                <p id="pfAdminStatus" class="pf-v9-status" role="status" aria-live="polite"></p>
+            </div>
+        </section>
+
+
+        <section class="seccion pf-learning-section" id="aprendizaje">
+            <p class="etiqueta">PIXEL FORGE · BIBLIOTECA DE APRENDIZAJE</p>
+            <h2>Aprende, experimenta y crea</h2>
+            <p class="descripcion">Manuales prácticos para comenzar en programación y streaming. Avanza a tu ritmo, prueba los ejercicios y construye tus propios proyectos.</p>
+            <div class="pf-learning-grid">
+                <article class="pf-learning-card pf-learning-code">
+                    <div class="pf-learning-art" aria-hidden="true"><span>&lt;/&gt;</span><i></i><i></i></div>
+                    <div class="pf-learning-card-body">
+                        <span class="pf-learning-tag">PROGRAMACIÓN · PRINCIPIANTE</span>
+                        <h3>Manual de programación para principiantes</h3>
+                        <p>Aprende fundamentos y crea un videojuego 2D con Godot, una app de tareas con Flutter y una página web personal.</p>
+                        <ul><li>12 capítulos</li><li>3 tutoriales prácticos</li><li>Ejercicios y proyecto final</li></ul>
+                        <a class="boton" href="./manual-programacion.html">Comenzar manual</a>
+                    </div>
+                </article>
+                <article class="pf-learning-card pf-learning-live">
+                    <div class="pf-learning-art" aria-hidden="true"><span>LIVE</span><i></i><i></i></div>
+                    <div class="pf-learning-card-body">
+                        <span class="pf-learning-tag">STREAMING · PRINCIPIANTE</span>
+                        <h3>Manual de streaming para principiantes</h3>
+                        <p>Prepara tu canal, equipo, conexión y OBS Studio; aprende a producir, moderar y realizar tu primera transmisión.</p>
+                        <ul><li>16 capítulos</li><li>Guía paso a paso de OBS</li><li>Seguridad y checklist de directo</li></ul>
+                        <a class="boton" href="./manual-streaming.html">Comenzar manual</a>
+                    </div>
+                </article>
+            </div>
+            <p class="pf-learning-note">El progreso de lectura se guarda en el navegador donde abres cada manual. No se sincroniza con Supabase ni con otros dispositivos.</p>
+        </section>
+
+        <section class="seccion pf-v9-section" id="contactos">
+            <p class="etiqueta">CANALES OFICIALES</p>
+            <h2>Contactos</h2>
+            <p class="descripcion">Los datos de contacto se pueden completar en la configuración de la web. No se muestran direcciones inventadas.</p>
+            <div class="pf-v9-contact-grid">
+                <article class="pf-v9-contact-card"><span>Correo</span><a id="pfV9ContactEmail" href="#contactos">Añadir correo en api-config.js</a></article>
+                <article class="pf-v9-contact-card"><span>WhatsApp</span><a id="pfV9ContactWhatsapp" href="#contactos">Añadir número en api-config.js</a></article>
+                <article class="pf-v9-contact-card"><span>Red social</span><a id="pfV9ContactSocial" href="#contactos">Añadir enlace en api-config.js</a></article>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contacto">
+        <h2>PIXELFORGE</h2>
+        <p>Tu próximo juego favorito te espera. Explora, juega, transmite y comparte.</p>
+        <p class="copyright">© <span id="anioActual"></span> PixelForge</p>
+    </footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./js/config.js"></script>
+<script src="./js/core.js"></script>
+<script src="./js/profile.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/admin-v9.js"></script>
+<script src="./js/admin-v10.js"></script>
+<script src="./js/role-management.js"></script>
+<script src="./js/supabase-sync.js"></script>
+<script src="./js/soundtrack.js"></script>
+</body>
+</html>
